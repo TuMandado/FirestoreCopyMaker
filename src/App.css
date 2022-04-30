@@ -1,3 +1,11 @@
 .header {
   text-align: center;
 }
+
+/* Add imported font */
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@200;400;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Exo', sans-serif;
+}

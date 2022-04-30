@@ -1,7 +1,9 @@
 const initialState = {
-  isLoading: false,
-  databases: [],
-  collections: [],
+  isLoading: true,
+  databases: null,
+  collections: null,
+  selectedDatabases: [],
+  selectedCollections: [],
 };
 
 //dispatch(setUser(user))
@@ -17,6 +19,21 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         databases: action.payload,
+      };
+    case "SET_LOADING":
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
+    case "SET_SELECTED_DATABASES":
+      return {
+        ...state,
+        selectedDatabases: action.payload,
+      };
+    case "SET_SELECTED_COLLECTIONS":
+      return {
+        ...state,
+        selectedCollections: action.payload,
       };
     default:
       return state;

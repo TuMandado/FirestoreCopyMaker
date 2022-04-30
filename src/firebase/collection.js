@@ -6,7 +6,8 @@ const ref = 'Collections Mapped'
 export async function getCollections() {
     try {
         let toReturn = await getDoc(doc(defaultDb, ref, ref));
-        return toReturn.data()[0];
+        console.log('getCollections', toReturn.data()["Collections Mapped"])
+        return toReturn.data()["Collections Mapped"];
     } catch (error) {
         console.log("getProduct error: ", error)
     }
