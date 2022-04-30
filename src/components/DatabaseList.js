@@ -29,55 +29,65 @@ import { setSelectedDatabases } from "../store/actions";
 // Each database is stored in an array of objects.
 
 export default function DatabaseList() {
-    const dispatch = useDispatch();
-    var databases = useSelector((state) => state.databases);
-    var selectedDatabases = useSelector((state) => state.selectedDatabases);
+  const dispatch = useDispatch();
+  var databases = useSelector((state) => state.databases);
+  var selectedDatabases = useSelector((state) => state.selectedDatabases);
 
-    const handleToggle = (database) => () => {
-        var newSelectedDatabases = [...selectedDatabases];
-        var index = newSelectedDatabases.indexOf(database);
-        if (index === -1) {
-            newSelectedDatabases.push(database);
-        } else {
-            newSelectedDatabases.splice(index, 1);
-        }
-        dispatch(setSelectedDatabases(newSelectedDatabases));
-    };
+  const handleToggle = (database) => () => {
+    var newSelectedDatabases = [...selectedDatabases];
+    var index = newSelectedDatabases.indexOf(database);
+    if (index === -1) {
+      newSelectedDatabases.push(database);
+    } else {
+      newSelectedDatabases.splice(index, 1);
+    }
+    dispatch(setSelectedDatabases(newSelectedDatabases));
+  };
 
-    return (
-        <List
-            sx={{
-                width: "30%",
-                maxWidth: 360,
-                bgcolor: "background.paper",
-            }}
-        >
-            {databases?.map((database) => (
-                <ListItem key={database.uid}>
-                    <ListItemIcon>
-                        <Checkbox
-                            edge="start"
-                            checked={selectedDatabases.indexOf(database) !== -1}
-                            tabIndex={-1}
-                            disableRipple
-                            onClick={handleToggle(database)}
-                        />
-                    </ListItemIcon>
-                    <ListItemText primary={database.uid} />
-                    <ListItemIcon>
-                        <IconButton
-                            edge="end"
-                            aria-label="info"
-                            onClick={() => {
-                                alert(`${database.uid}`);
-                            }
-                            }
-                        >
-                            <InfoIcon />
-                        </IconButton>
-                    </ListItemIcon>
-                </ListItem>
-            ))}
-        </List>
-    );
+  return (
+    <List
+      sx={{
+        width: "30%",
+        maxWidth: 360,
+        bgcolor: "background.paper",
+      }}
+    >
+      <h3
+        style={{
+          textAlign: "center",
+          margin: "0 auto",
+          width: "100%",
+          maxWidth: "960px",
+          padding: "0 1rem",
+        }}
+      >
+        Databases
+      </h3>
+      {databases?.map((database) => (
+        <ListItem key={database.uid}>
+          <ListItemIcon>
+            <Checkbox
+              edge="start"
+              checked={selectedDatabases.indexOf(database) !== -1}
+              tabIndex={-1}
+              disableRipple
+              onClick={handleToggle(database)}
+            />
+          </ListItemIcon>
+          <ListItemText primary={database.uid} />
+          <ListItemIcon>
+            <IconButton
+              edge="end"
+              aria-label="info"
+              onClick={() => {
+                alert(`${database.uid}`);
+              }}
+            >
+              <InfoIcon />
+            </IconButton>
+          </ListItemIcon>
+        </ListItem>
+      ))}
+    </List>
+  );
 }

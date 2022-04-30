@@ -19,7 +19,7 @@ export default function CollectionsList() {
   var selectedCollections = useSelector((state) => state.selectedCollections);
   var selectedCollections = useSelector((state) => state.selectedCollections);
 
-  const handleToggle = (collection) => () => {	
+  const handleToggle = (collection) => () => {
     var newSelectedCollections = [...selectedCollections];
     var index = newSelectedCollections.indexOf(collection);
     if (index === -1) {
@@ -30,9 +30,7 @@ export default function CollectionsList() {
     dispatch(setSelectedCollections(newSelectedCollections));
   };
 
-
   return (
-
     <List
       sx={{
         width: "30%",
@@ -40,14 +38,23 @@ export default function CollectionsList() {
         bgcolor: "background.paper",
       }}
     >
+      <h3
+        style={{
+          textAlign: "center",
+          margin: "0 auto",
+          width: "100%",
+          maxWidth: "960px",
+          padding: "0 1rem",
+        }}
+      >
+        Collections
+      </h3>
       {collections?.map((collection) => (
         <ListItem key={collection}>
           <ListItemIcon>
             <Checkbox
               edge="start"
-              checked={
-                selectedCollections.indexOf(collection) !== -1
-              }
+              checked={selectedCollections.indexOf(collection) !== -1}
               tabIndex={-1}
               disableRipple
               onClick={handleToggle(collection)}
