@@ -14,6 +14,7 @@ function App() {
   // Get info from collections when the app is loaded.
   const dispatch = useDispatch();
   var collections = useSelector((state) => state.collections);
+  var databases = useSelector((state) => state.databases);
   var isLoading = useSelector((state) => state.isLoading);
 
   useEffect(() => {
