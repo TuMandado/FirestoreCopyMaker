@@ -58,9 +58,6 @@ export default function StoreDetails() {
             justifyContent: "center",
             alignItems: "center",
             margin: "0 auto",
-            width: "100%",
-            maxWidth: "960px",
-            padding: "0 1rem",
           }}
         >
           <Typography variant="h5" component="h2">

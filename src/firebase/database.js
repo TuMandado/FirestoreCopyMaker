@@ -96,6 +96,9 @@ export async function getAllDatabasesConfigurations() {
 // }
 
 export async function editDatabaseConfigurations(uid, data) {
+  data = {
+    firebaseConfig: data,
+  };
   await updateDoc(
     doc(defaultDb, "Databases Configurations", uid),
     data

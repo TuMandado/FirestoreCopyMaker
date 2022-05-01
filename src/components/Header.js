@@ -1,12 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 function Header() {
   // Header is a top bar with a title and a button to go to the home page.
   // The button is the firebase logo.
   // The firebase logo is imported from https://w7.pngwing.com/pngs/876/977/png-transparent-yellow-folder-firebase-cloud-messaging-computer-icons-google-cloud-messaging-angularjs-github-angle-triangle-orange.png
   // The top bar has a title that says "Firebase CopyMaker"
   // The bar has a white background, black text, and a black border.
+  // The bar has a button to go to the home page with a home icon and a description.
+  // The home button is a link to the home page.
+  // The bar has a button to add a collection with a plus icon and a description.
+  // The bar has a button to add a database with a storage icon and a description.
+  
 
   return (
     <div
@@ -46,5 +52,6 @@ function Header() {
     </div>
   );
 }
+
 
 export default Header;

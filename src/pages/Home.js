@@ -5,6 +5,8 @@ import DatabaseList from "../components/DatabaseList";
 import { useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import Menu from "../components/Menus";
+import Button from "@mui/material/Button";
 
 function Home() {
   const databases = useSelector((state) => state.databases);
@@ -19,9 +21,6 @@ function Home() {
             justifyContent: "center",
             alignItems: "center",
             margin: "0 auto",
-            width: "100%",
-            maxWidth: "960px",
-            padding: "0 1rem",
           }}
         >
           <Typography variant="h5" component="h2">
@@ -45,9 +44,37 @@ function Home() {
             padding: "0 1rem",
           }}
         >
+          <Menu />
           <CollectionsList />
           <DatabaseList />
         </div>
+        {/* Under both list there should be a big SYNC button */}
+        <Button
+          sx={{
+            // The button should be a big one in the bottom right corner
+            position: "fixed",
+            bottom: "1rem",
+            right: "1rem",
+            // The button should be a big one in the bottom right corner
+            width: "100px",
+            height: "100px",
+            // The button should be a big one in the bottom right corner
+            borderRadius: "50%",
+            // The button should be a big one in the bottom right corner
+            backgroundColor: "primary",
+            // The button should be a big one in the bottom right corner
+            color: "white",
+            // The button should be a big one in the bottom right corner
+            fontSize: "2rem",
+          }}
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            console.log("sync");
+          }}
+        >
+          Sync
+        </Button>
       </div>
     );
   }
