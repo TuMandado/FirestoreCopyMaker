@@ -80,7 +80,8 @@ export default function DatabaseList() {
               edge="end"
               aria-label="info"
               onClick={() => {
-                alert(`${database.uid}`);
+                // Redirect to the database details page.
+                window.location.href = `/store/${database.uid}`;
               }}
             >
               <InfoIcon />

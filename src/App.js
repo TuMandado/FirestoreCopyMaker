@@ -4,15 +4,19 @@ import CheckboxList from "./components/CheckboxList";
 import ButtonsActions from "./components/ButtonsActions";
 import Home from "./pages/Home";
 import StoreDetails from "./pages/StoreDetails";
+import EditStore from "./pages/EditStore";
+import CreateNewStore from "./pages/CreateNewStore";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { setCollections, setDatabases, setLoading } from "./store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { getCollections, editCollections } from "./firebase/collection";
+import { getAllDatabasesConfigurations } from "./firebase/database";
 import "./App.css";
 
 function App() {
   // Get info from collections when the app is loaded.
   const dispatch = useDispatch();
+
   var collections = useSelector((state) => state.collections);
   var databases = useSelector((state) => state.databases);
   var isLoading = useSelector((state) => state.isLoading);
@@ -21,9 +25,12 @@ function App() {
     getCollections().then((collections) => {
       dispatch(setCollections(collections));
     });
+    getAllDatabasesConfigurations().then((databases) => {
+      dispatch(setDatabases(databases));
+    });
   }, []);
 
-  // When collections are not null, isLoading is false, and the app is loaded
+  // When collections and databases are not null, set isLoading to false.
   useEffect(() => {
     if (collections && isLoading) {
       dispatch(setLoading(false));
@@ -39,7 +46,7 @@ function App() {
       });
     }
   }, [collections]);
-  
+
   try {
     return (
       <div className={"App"}>
@@ -47,6 +54,8 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/store/:storeId" element={<StoreDetails />} />
+            <Route path="/edit/:storeId" element={<EditStore />} />
+            <Route path="/create" element={<CreateNewStore />} />
           </Routes>
         </Router>
       </div>

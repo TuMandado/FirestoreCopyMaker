@@ -7,6 +7,7 @@ import {
   getDoc,
   getDocs,
   collection,
+  updateDoc
 } from "firebase/firestore";
 
 // The database format is:
@@ -88,4 +89,15 @@ export async function getAllDatabasesConfigurations() {
     });
   });
   return array;
+}
+
+// export async function editProduct(uid, data) {
+//   await updateDoc(doc(db, collectionRef, uid), data);
+// }
+
+export async function editDatabaseConfigurations(uid, data) {
+  await updateDoc(
+    doc(defaultDb, "Databases Configurations", uid),
+    data
+  );
 }
