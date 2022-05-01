@@ -56,10 +56,10 @@ function Home() {
             bottom: "1rem",
             right: "1rem",
             // The button should be a big one in the bottom right corner
-            width: "100px",
+            width: "200px",
             height: "100px",
             // The button should be a big one in the bottom right corner
-            borderRadius: "50%",
+            borderRadius: "5%",
             // The button should be a big one in the bottom right corner
             backgroundColor: "primary",
             // The button should be a big one in the bottom right corner
@@ -68,12 +68,11 @@ function Home() {
             fontSize: "2rem",
           }}
           variant="contained"
-          color="primary"
           onClick={() => {
             console.log("sync");
           }}
         >
-          Sync
+          Sync databases
         </Button>
       </div>
     );
