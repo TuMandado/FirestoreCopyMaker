@@ -214,6 +214,14 @@ function CreateNewStore() {
               >
                 Add Store
               </Button>
+          {/* // Add a go back home button. */}
+              <Button
+                onClick={() => {
+                  window.location.href = "/";
+                }}
+              >
+                Go Back Home
+              </Button>
             </CardActions>
           </Card>
         </div>
