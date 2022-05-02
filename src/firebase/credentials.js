@@ -29,7 +29,6 @@ const defaultFirebaseApp = initializeApp(
 );
 const defaultDb = getFirestore(defaultFirebaseApp, "To Store Configs");
 // Exportamos firebaseApp para poder utilizarla en cualquier lugar de la aplicación
-export { defaultFirebaseApp, defaultDb };
 
 const firebaseConfigPetShop = {
   apiKey: "AIzaSyAcHKVuiISpf0Lq0RtyJoB-B2wSy8LwrHE",
@@ -44,3 +43,5 @@ const firebaseConfigPetShop = {
 // Inicializamos la aplicación y la guardamos en firebaseApp
 const firebasePetShopApp = initializeApp(firebaseConfigPetShop, "PetShop");
 const firebasePetShopDb = getFirestore(firebasePetShopApp, "PetShop");
+
+export { defaultFirebaseApp, defaultDb, firebasePetShopApp, firebasePetShopDb };
