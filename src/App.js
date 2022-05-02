@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import StoreDetails from "./pages/StoreDetails";
 import EditStore from "./pages/EditStore";
 import CreateNewStore from "./pages/CreateNewStore";
+import CreateNewCollection from "./pages/CreateNewCollection";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { setCollections, setDatabases, setLoading } from "./store/actions";
 import { useDispatch, useSelector } from "react-redux";
@@ -37,15 +38,16 @@ function App() {
     }
   }, [collections]);
 
-  // When collections change, update the database and isLoading to true
-  useEffect(() => {
-    if (collections) {
-      dispatch(setLoading(true));
-      editCollections(collections).then(() => {
-        dispatch(setLoading(false));
-      });
-    }
-  }, [collections]);
+  // // When collections change, update the database and isLoading to true
+  // useEffect(() => {
+  //   if (collections) {
+  //     dispatch(setLoading(true));
+  //     console.log("collections changed  ", collections);
+  //     editCollections(collections).then(() => {
+  //       dispatch(setLoading(false));
+  //     });
+  //   }
+  // }, [collections]);
 
   try {
     return (
@@ -56,6 +58,8 @@ function App() {
             <Route path="/store/:storeId" element={<StoreDetails />} />
             <Route path="/edit/:storeId" element={<EditStore />} />
             <Route path="/create" element={<CreateNewStore />} />
+            <Route path="/newStore" element={<CreateNewStore />} />
+            <Route path="/newCollection" element={<CreateNewCollection />} />
           </Routes>
         </Router>
       </div>

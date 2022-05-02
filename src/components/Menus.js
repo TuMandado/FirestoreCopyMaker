@@ -67,7 +67,7 @@ export default function Menu() {
             color: "black",
             textDecorationLine: "none",
           }}
-          to="/newDatabase"
+          to="/newStore"
         >
           <MenuItem>
             <ListItemIcon>

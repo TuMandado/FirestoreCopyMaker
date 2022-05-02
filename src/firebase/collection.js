@@ -14,5 +14,12 @@ export async function getCollections() {
 }
 
 export async function editCollections(data) {
-    await updateDoc(doc(defaultDb, ref, ref), data);
+    data = {
+        "Collections Mapped": data
+    }
+    await updateDoc(doc(defaultDb, ref, ref), data).then(() => {
+        console.log("editCollections success")
+    }).catch((error) => {
+        console.log("editCollections error: ", error)
+    })
 }
