@@ -15,89 +15,98 @@ import { editCollections } from "../firebase/collection";
 // The create new collection concatenates the name of the new collection in the array of collections, that is in the redux store.
 // It also has the same style as the create new store.
 
-function CreateNewCollection () {
-    var dispatch = useDispatch();
-    var collections = useSelector((state) => state.collections);
-    var databases = useSelector((state) => state.databases);
+function CreateNewCollection() {
+  var dispatch = useDispatch();
+  var collections = useSelector((state) => state.collections);
+  var databases = useSelector((state) => state.databases);
 
-    var [collectionName, setCollectionName] = useState("");
-    var [error, setError] = useState("");
+  var [collectionName, setCollectionName] = useState("");
+  var [error, setError] = useState("");
 
-    function addCollection() {
-        if (collectionName.length == 0) {
-            setError("Please enter a collection name.");
-            return;
-        }
-
-        // Add the new collection to the array of collections.
-        collections.push(collectionName);
-
-        // Update the collections in the database.
-        editCollections(collections).then(() => {
-            dispatch(setCollections(collections));
-        }).then(() => {
-            // Redirect to the home page.
-            window.location.href = "/";
-        }).catch((error) => {
-            alert(error);
-        });
+  function addCollection() {
+    if (collectionName.length == 0) {
+      setError("Please enter a collection name.");
+      return;
     }
 
-    // If the database is loading, show a loading message.
-    if (!databases || databases.length == 0) {
-        return (
-            <Box>
-                <Header />
-                <Box
-                    display="flex"
-                    justifyContent="center"
-                    alignItems="center"
-                    flexDirection="column"
-                    marginTop="50px"
-                >
-                    <Typography variant="h4">Loading...</Typography>
-                </Box>
-            </Box>
-        );
-    } else {
-        return (
-            <Box>
-                <Header />
-                <Box
-                    display="flex"
-                    justifyContent="center"
-                    alignItems="center"
-                    flexDirection="column"
-                    marginTop="50px"
-                >
-                    <Card>
-                        <CardContent>
-                            <Typography variant="h4">Create New Collection</Typography>
-                            <TextField
-                                label="Collection Name"
-                                value={collectionName}
-                                onChange={(e) => setCollectionName(e.target.value)}
-                                margin="normal"
-                                variant="outlined"
-                            />
-                            <Typography color="error">{error}</Typography>
-                        </CardContent>
-                        <CardActions>
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                onClick={addCollection}
-                            >
-                                Create
-                            </Button>
-                        </CardActions>
-                    </Card>
-                </Box>
-            </Box>
-        );
-    }
+    // Add the new collection to the array of collections.
+    collections.push(collectionName);
+
+    // Update the collections in the database.
+    editCollections(collections)
+      .then(() => {
+        dispatch(setCollections(collections));
+      })
+      .then(() => {
+        // Redirect to the home page.
+        window.location.href = "/";
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  }
+
+  // If the database is loading, show a loading message.
+  if (!databases || databases.length == 0) {
+    return (
+      <Box>
+        <Header />
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          flexDirection="column"
+          marginTop="50px"
+        >
+          <Typography variant="h4">Loading...</Typography>
+        </Box>
+      </Box>
+    );
+  } else {
+    return (
+      <Box>
+        <Header />
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          flexDirection="column"
+          marginTop="50px"
+        >
+          <Card>
+            <CardContent>
+              <Typography variant="h4">Create New Collection</Typography>
+              <TextField
+                label="Collection Name"
+                value={collectionName}
+                onChange={(e) => setCollectionName(e.target.value)}
+                margin="normal"
+                variant="outlined"
+              />
+              <Typography color="error">{error}</Typography>
+            </CardContent>
+            <CardActions>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={addCollection}
+              >
+                Create
+              </Button>
+              {/* // Add a go back home button. */}
+              <Button
+                onClick={() => {
+                  window.location.href = "/";
+                }}
+              >
+                Go Back Home
+              </Button>
+            </CardActions>
+          </Card>
+        </Box>
+      </Box>
+    );
+  }
 }
 
 export default CreateNewCollection;
-
-
