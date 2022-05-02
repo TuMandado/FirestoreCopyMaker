@@ -26,12 +26,14 @@ function Home() {
     }
     setSyncingDatabases(true);
     // Wait for the sync to complete
-    syncEverything(selectedCollections, selectedDatabases).then(() => {
-      setSyncingDatabases(false);
-    }).catch((error) => {
-      setSyncingDatabases(false);
-      alert("Error: " + error);
-    });
+    syncEverything(selectedCollections, selectedDatabases)
+      .then(() => {
+        setSyncingDatabases(false);
+      })
+      .catch((error) => {
+        setSyncingDatabases(false);
+        alert("Error: " + error);
+      });
   }
 
   // If the databases are syncing, show a spinner

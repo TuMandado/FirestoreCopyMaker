@@ -47,7 +47,7 @@ export default function StoreDetails() {
   }, [databases]);
 
   // If the database is loading, show a loading message.
-  if (!databases || databases.length == 0 ) {
+  if (!databases || databases.length == 0) {
     return (
       <div>
         <Header />
