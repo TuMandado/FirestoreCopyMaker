@@ -7,6 +7,7 @@ import StoreDetails from "./pages/StoreDetails";
 import EditStore from "./pages/EditStore";
 import CreateNewStore from "./pages/CreateNewStore";
 import CreateNewCollection from "./pages/CreateNewCollection";
+import Help from "./pages/Help";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { setCollections, setDatabases, setLoading } from "./store/actions";
 import { useDispatch, useSelector } from "react-redux";
@@ -60,6 +61,7 @@ function App() {
             <Route path="/create" element={<CreateNewStore />} />
             <Route path="/newStore" element={<CreateNewStore />} />
             <Route path="/newCollection" element={<CreateNewCollection />} />
+            <Route path="/help" element={<Help />} />
           </Routes>
         </Router>
       </div>

@@ -29,6 +29,7 @@ function Home() {
     syncEverything(selectedCollections, selectedDatabases)
       .then(() => {
         setSyncingDatabases(false);
+        alert("Sync successful.");
       })
       .catch((error) => {
         setSyncingDatabases(false);

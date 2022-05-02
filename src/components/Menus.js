@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd"; // Add a collection button.
 import StorageIcon from "@mui/icons-material/Storage"; // Add a database button.
 import HomeIcon from "@mui/icons-material/Home"; // Go to home button.
+import HelpIcon from '@mui/icons-material/Help'; // Go to help button.
 import { Link } from "react-router-dom";
 
 // The menu has links to the home page, add a collection, and add a database. Each of these links with a ListItemText and ListItemIcon.
@@ -74,6 +75,24 @@ export default function Menu() {
               <StorageIcon />
             </ListItemIcon>
             <ListItemText primary="Add a database">Add a database</ListItemText>
+          </MenuItem>
+        </Link>
+        {
+          // Add a button
+        }
+        <Link
+          style={{
+            textDecoration: "none",
+            color: "black",
+            textDecorationLine: "none",
+          }}
+          to="/help"
+        >
+          <MenuItem>
+            <ListItemIcon>
+              <HelpIcon />
+            </ListItemIcon>
+            <ListItemText primary="Help">Help</ListItemText>
           </MenuItem>
         </Link>
       </MenuList>
